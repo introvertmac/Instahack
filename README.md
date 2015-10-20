@@ -10,6 +10,6 @@ Python script scrap the page for script tag, convert paticular tag contents into
 
 Can be useful for personal use, Social media marketing, Business (who ship Instagram hardcopy)
 
-[Live at](http://bmanish001.pythonanywhere.com "Instahack")
+[Give it a try)](http://bmanish001.pythonanywhere.com "Instahack")
 
 
