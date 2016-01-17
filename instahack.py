@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request #importing Flask elements
 import requests
+import re
 from bs4 import BeautifulSoup
 app= Flask(__name__)
 
@@ -10,12 +11,14 @@ def index():
 		raw=requests.get(url) #URL from form goes inside requests
 		soup=BeautifulSoup(raw.text,'html.parser')#scraped the HTML
 
-		data= soup.find_all('meta')[9] #we want 9th meta tag
-		image= str(data)[15:124] #convetered into string and strip it for the image URL 
+		links= soup.find_all('meta')[9] #we want 9th meta tag
+		link=str(links)
+		image_links=re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',link) #extracting URL from meta using regex
+		image=image_links[0]
 
 
 		while image!='':
-			return '<img src="'+image+ 'align="center">' #render inside the image tag
+			return '<img src="'+image+'"'+ 'align="center">' #render inside the image tag
 
 	return render_template('index.html')
 
