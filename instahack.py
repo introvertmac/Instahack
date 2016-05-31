@@ -1,24 +1,19 @@
-from flask import Flask,render_template,request #importing Flask elements
+from flask import Flask,render_template,request
 import requests
-import re
 from bs4 import BeautifulSoup
 app= Flask(__name__)
 
 @app.route('/',methods=['GET','POST'])
 def index():
 	if request.method=='POST' and 'iurl' in request.form:
-		url=request.form['iurl'] #url from the form
-		raw=requests.get(url) #URL from form goes inside requests
-		soup=BeautifulSoup(raw.text,'html.parser')#scraped the HTML
+		url=request.form['iurl']
+		raw=requests.get(url)
+		soup=BeautifulSoup(raw.text,'html.parser')
 
-		links= soup.find_all('meta')[9] #we want 9th meta tag
-		link=str(links)
-		image_links=re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',link) #extracting URL from meta using regex
-		image=image_links[0]
-
-
+		links= soup.find(property="og:image")
+		image=links.get('content')
 		while image!='':
-			return '<img src="'+image+'"'+ 'align="center">' #render inside the image tag
+			return '<img src="'+image+'"'+ 'align="center">'
 
 	return render_template('index.html')
 
