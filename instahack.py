@@ -5,15 +5,15 @@ app= Flask(__name__)
 
 @app.route('/',methods=['GET','POST'])
 def index():
-	if request.method=='POST' and 'iurl' in request.form:
-		url=request.form['iurl']
-		raw=requests.get(url)
-		soup=BeautifulSoup(raw.text,'html.parser')
+	if request.method=='POST' and 'iurl' in request.form: #basic Flask structure 
+		url=request.form['iurl'] 
+		raw=requests.get(url) #make a request to the URL
+		soup=BeautifulSoup(raw.text,'html.parser') #get the HTML
 
-		links= soup.find(property="og:image")
-		image=links.get('content')
+		links= soup.find(property="og:image") #find meta with property=og:image
+		image=links.get('content') #get its content
 		while image!='':
-			return '<img src="'+image+'"'+ 'align="center">'
+			return '<img src="'+image+'"'+ 'align="center">' #insert content in img tag
 
 	return render_template('index.html')
 
