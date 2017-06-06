@@ -1,28 +1,55 @@
 <!Doctype html>
 <html>
 <head>
-	<title> Download HD Instagram Images </title>
+	<title> Download HD Instagram photo online </title>
+	<meta name="description" content="Instagram Online Photo Downloader. Simple way to download Instagram pictures online from your browser.">
+    <meta name="keywords" content="Download Instagram Photos online, download Instagram pictures, save instagram pictures from browser">
 	<style type="text/css">
-		body{
-			background: black;
-			color: #fff;
-		}
+	     #input{
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
 		.container{
 			text-align: center;
 			margin: 0 auto;
 			width: 500px;
 			padding-top: 20%;
 		}
-	</style>
+		a{
+		    text-decoration:none;
+
+		}
+
+</style>
 </head>
 <body>
 	<div class="container">
-	<p><b>Download Instagram HD (Full size)image</b></p>
-	<form action="" method="POST">
-		<input type="url" name="iurl" placeholder="https://instagram.com/p/777sGAob-_/" required >
-		<input type="submit" value="Image URL">
+	<p><b>Download Instagram HD Photos (Full size): right click > save image </b></p>
+	<form action="" method="POST" id="manish">
+		<input type="url" id="input" name="iurl" placeholder="Enter image's link, https://www.instagram.com/p/BTzLiCrF5HC/?taken-by=introvertmac007" autocomplete="off" required >
+		<input type="submit" value="SUBMIT">
 	</form>
-	
+	<p>Made with &hearts; by <a href="https://twitter.com/introvertmac007">@introvertmac007</a></p>
 	</div>
+	<script>
+	    mixpanel.track_forms("#manish", "Created Account");
+	</script>
 </body>
 </html>
